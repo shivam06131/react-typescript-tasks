@@ -5,7 +5,7 @@ import TodoTask from "./TodoTask";
 
 const App: FC = (): ReactElement => {
   const [task, setTask] = useState<string>("");
-  const [deadLine, setDeadLine] = useState<number>(0);
+  const [deadLine, setDeadLine] = useState<number | string>("");
   const [todoList, setTodoList] = useState<ITask[]>([]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -20,7 +20,7 @@ const App: FC = (): ReactElement => {
     let obj = { task, deadLine };
     setTodoList([obj, ...todoList]);
     setTask("");
-    setDeadLine(0);
+    setDeadLine("");
   };
 
   const completeTask = (taskName: string): void => {
@@ -46,6 +46,7 @@ const App: FC = (): ReactElement => {
             name="deadLine"
             id="deadLine"
             value={deadLine}
+            placeholder="Add task priority..."
             onChange={handleChange}
           />
         </div>
